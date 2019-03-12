@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using TransponderReceiver;
 
@@ -7,6 +8,9 @@ namespace Decoder
     public class Decoder
     {
         private ITransponderReceiver receiver;
+
+        //List of Airplanes
+        public List<Airplane> airplaneList = new List<Airplane>();
 
         public Decoder(ITransponderReceiver receiver)
         {
@@ -25,6 +29,12 @@ namespace Decoder
                 int alti = Int32.Parse(plane[3]);
                 string format = "yyyyMMddHHmmssfff";
                 DateTime time = DateTime.ParseExact(plane[4], format, CultureInfo.InvariantCulture);
+
+                //Create new plane from decoder.
+                Airplane airplane = new Airplane(tag, xCord, yCord, alti, time);
+
+                //Add current Airplane to list of Airplanes.
+                airplaneList.Add(airplane);
             }
         }
     }

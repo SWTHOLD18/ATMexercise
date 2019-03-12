@@ -4,12 +4,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace Decoder
 {
     public class Airplane
     {
+        public Airplane(
+            String _tag,
+            int _X_coordinate,
+            int _Y_coordinate,
+            /*
+            int _Pre_x_coordinate,
+            int _Pre_y_coordinate,
+            */
+            int _Altitude,
+            DateTime _Timestamp
+            )
+        {
+            Tag = _tag;
+            X_coordinate = _X_coordinate;
+            Y_coordinate = _Y_coordinate;
+            /*
+            Pre_x_coordinate = _Pre_x_coordinate;
+            Pre_y_coordinate = _Pre_y_coordinate;
+            */
+            Altitude = _Altitude;
+            Timestamp = _Timestamp;
+        }
+
         public string Tag { get; set; } 
 
+        public int X_coordinate { get; set; }
+
+        public int Y_coordinate { get; set; }
+
+
+        /*
         public int X_coordinate  
         {
             get 
@@ -41,6 +70,8 @@ namespace ConsoleApp1
         public int Pre_x_coordinate { get; set; }
 
         public int Pre_y_coordinate { get; set; }
+
+        */
 
         public int Altitude { get; set; }
 
