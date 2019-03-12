@@ -12,7 +12,7 @@ namespace Decoder
         
         public Calculator(List<Airplane> airplaneList)
         {
-            if (oldaAirplaneList.Count == 0)
+            if (oldaAirplaneList == null)
             {
                 oldaAirplaneList = airplaneList;
             }            
@@ -36,10 +36,41 @@ namespace Decoder
             SouthWest = 5
         }
 
-        public static Direction GetDirection(int x_coordinate, int y_coordinate)
+        public Direction GetDirection(Airplane newAirplane)
         {
+            Airplane oldAirplane = oldaAirplaneList.Find(a => a.Tag == newAirplane.Tag);
+            double x_coordinate_difference = 0;
+            double y_coordinate_difference = 0;
+
+            if (newAirplane.X_coordinate > oldAirplane.X_coordinate)
+            {
+                x_coordinate_difference = newAirplane.X_coordinate - oldAirplane.X_coordinate;
+            }
+            else
+            {
+                x_coordinate_difference = oldAirplane.X_coordinate - newAirplane.X_coordinate;
+            }
+
+            if (newAirplane.Y_coordinate > oldAirplane.Y_coordinate)
+            {
+                y_coordinate_difference = newAirplane.Y_coordinate - oldAirplane.Y_coordinate;
+            }
+            else
+            {
+                y_coordinate_difference = oldAirplane.Y_coordinate - newAirplane.Y_coordinate;
+            }
+
+            double angle = Math.Atan2(x_coordinate_difference, y_coordinate_difference);
+            /*
             //Get angle by two members tangent.
-            double angle = Math.Atan2(x_coordinate, y_coordinate);
+            double angle = Math.Atan2(newAirplane.X_coordinate, newAirplane.Y_coordinate);
+            double oldAngle = Math.Atan2(oldAirplane.X_coordinate, oldAirplane.Y_coordinate);
+
+            double angle2 = Math.Atan2(oldAngle, angle);
+            */
+            /*
+            double differenceAngle = oldAngle -  angle;
+            */
 
             //Fit angle to whole circle
             angle += Math.PI;

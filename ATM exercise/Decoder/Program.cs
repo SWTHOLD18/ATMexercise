@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,13 @@ namespace Decoder
     {
         static void Main(string[] args)
         {
-            Airplane airplane1 = new Airplane("ATR423", 39045, 12932, 14000, 20151006213456789);
+            string format = "yyyyMMddHHmmssfff";
 
-            Airplane airplane2 = new Airplane("ATR423", 41452, 15006, 14000, 20151006213456999);
+            DateTime time1 = DateTime.ParseExact("20151006213456001", format, CultureInfo.InvariantCulture);
+            Airplane airplane1 = new Airplane("ATR423", 10000, 10000, 14000, time1);
+
+            DateTime time2 = DateTime.ParseExact("20151022215556001", format, CultureInfo.InvariantCulture);
+            Airplane airplane2 = new Airplane("ATR423", 40000, 40000, 14000, time2);
 
             List<Airplane> airplanesList = new List<Airplane>();
 
@@ -22,11 +27,15 @@ namespace Decoder
 
             Calculator testCalculator = new Calculator(airplanesList);
 
-            Calculator.GetDirection(airplane1.X_coordinate, airplane1.Y_coordinate);
+            Console.WriteLine(testCalculator.GetDirection(airplane2));
 
-            Calculator.GetDirection(airplane2.X_coordinate, airplane2.Y_coordinate);
+            //Console.WriteLine(testCalculator.GetDirection(airplane2.X_coordinate, airplane2.Y_coordinate));
 
-            Calculator.CalculateSpeed(airplane1);
+
+            Console.WriteLine(testCalculator.CalculateSpeed(airplane2));
+            
+
+            
         }
     }
 }
