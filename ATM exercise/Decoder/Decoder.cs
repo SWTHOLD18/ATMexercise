@@ -15,10 +15,10 @@ namespace Decoder
         public Decoder(ITransponderReceiver receiver)
         {
             this.receiver = receiver;
-            this.receiver.TransponderDataReady += decodeReadyData;
+            this.receiver.TransponderDataReady += DecodeReadyData;
         }
 
-        private void decodeReadyData(object sender, RawTransponderDataEventArgs arg)
+        private void DecodeReadyData(object sender, RawTransponderDataEventArgs arg)
         {
             foreach (var data in arg.TransponderData)
             {
