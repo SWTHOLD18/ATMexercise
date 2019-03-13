@@ -60,8 +60,6 @@ namespace Decoder
             double x_coordinate_difference = 0;
             double y_coordinate_difference = 0;
 
-
-
             if (newAirplane.X_coordinate > oldAirplane.X_coordinate)
             {
                 x_coordinate_difference = newAirplane.X_coordinate - oldAirplane.X_coordinate;
@@ -80,15 +78,10 @@ namespace Decoder
                 y_coordinate_difference = oldAirplane.Y_coordinate - newAirplane.Y_coordinate;
             }
 
-            DateTime timestampDifference = DateTime.Now.Subtract(oldAirplane.Timestamp - newAirplane.Timestamp);
+            DateTime timestampDifference = DateTime.Now.Subtract(newAirplane.Timestamp - oldAirplane.Timestamp);
             var timeDifference = timestampDifference.ToOADate();
 
             double distance = Math.Sqrt(Math.Pow(x_coordinate_difference, 2) + Math.Pow(y_coordinate_difference, 2));
-
-            if (timeDifference < 0)
-            {
-                timeDifference = timeDifference * (-1);
-            }
 
             return distance/timeDifference;
         }
