@@ -23,66 +23,35 @@ namespace Decoder
             Airplane = airplane;
         }
 
-        //List of possible Directions, based on compass.
-        public enum Direction
-        {
-            North = 0,
-            South = 4,
-            East = 2,
-            West = 6,
-            NortEast = 1,
-            NorthWest = 7,
-            SouthEast = 3,
-            SouthWest = 5
-        }
-
-        public Direction GetDirection(Airplane newAirplane)
+       
+        public double GetDirection(Airplane newAirplane)
         {
             Airplane oldAirplane = oldaAirplaneList.Find(a => a.Tag == newAirplane.Tag);
-            double x_coordinate_difference = 0;
-            double y_coordinate_difference = 0;
 
-            if (newAirplane.X_coordinate > oldAirplane.X_coordinate)
+            var x = newAirplane.X_coordinate - oldAirplane.X_coordinate;
+            var y = newAirplane.Y_coordinate - oldAirplane.Y_coordinate;
+
+            double angle = Math.Atan2(x, y);
+           
+            //Fit angle to whole circle if x = - angle
+            if(x <= 0)
             {
-                x_coordinate_difference = newAirplane.X_coordinate - oldAirplane.X_coordinate;
+               angle -= Math.PI; 
             }
-            else
-            {
-                x_coordinate_difference = oldAirplane.X_coordinate - newAirplane.X_coordinate;
-            }
-
-            if (newAirplane.Y_coordinate > oldAirplane.Y_coordinate)
-            {
-                y_coordinate_difference = newAirplane.Y_coordinate - oldAirplane.Y_coordinate;
-            }
-            else
-            {
-                y_coordinate_difference = oldAirplane.Y_coordinate - newAirplane.Y_coordinate;
-            }
-
-            double angle = Math.Atan2(x_coordinate_difference, y_coordinate_difference);
-            /*
-            //Get angle by two members tangent.
-            double angle = Math.Atan2(newAirplane.X_coordinate, newAirplane.Y_coordinate);
-            double oldAngle = Math.Atan2(oldAirplane.X_coordinate, oldAirplane.Y_coordinate);
-
-            double angle2 = Math.Atan2(oldAngle, angle);
-            */
-            /*
-            double differenceAngle = oldAngle -  angle;
-            */
-
-            //Fit angle to whole circle
-            angle += Math.PI;
+            
+            /* 
             angle /= Math.PI / 4;
-
             int halfQuarter = Convert.ToInt32(angle);
+            */
 
-            //Fit to output 1 of 8 Direction from Enum
-            halfQuarter %= 8;
+            //Convert angle to degrees
+            var degrees = angle * 180/Math.PI;
+
+            //Circle Clockwise North 0 -> 359 degress
+            var result = (degrees - 90) * -1;
 
             //Return the current direction from the 2 inputs.
-            return (Direction)halfQuarter;
+            return result;
         }        
 
         public double CalculateSpeed(Airplane newAirplane)
