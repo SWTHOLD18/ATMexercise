@@ -31,12 +31,14 @@ namespace Decoder
             var x = newAirplane.X_coordinate - oldAirplane.X_coordinate;
             var y = newAirplane.Y_coordinate - oldAirplane.Y_coordinate;
 
-            double angle = Math.Atan2(x, y);
+            double angle = Math.Atan2(y,x);
            
-            //Fit angle to whole circle if x = - angle
-            if(x <= 0)
+            //to make direction go clockwise we want the second quadrant to be negatve rather than positive
+            //we subtract PI to counteract Atan2's automatic +pi if x<0 and y>=0 and than subtract PI to make
+            //the degrees go negative clockwise
+            if(x < 0 && y>=0)
             {
-               angle -= Math.PI; 
+               angle -= 2*Math.PI; 
             }
             
             /* 
@@ -47,7 +49,7 @@ namespace Decoder
             //Convert angle to degrees
             var degrees = angle * 180/Math.PI;
 
-            //Circle Clockwise North 0 -> 359 degress
+            //subtract 90degrees to make north 0 and invert to make the clockwise negative into clockwise positive
             var result = (degrees - 90) * -1;
 
             //Return the current direction from the 2 inputs.
@@ -78,12 +80,12 @@ namespace Decoder
                 y_coordinate_difference = oldAirplane.Y_coordinate - newAirplane.Y_coordinate;
             }
 
-            DateTime timestampDifference = DateTime.Now.Subtract(newAirplane.Timestamp - oldAirplane.Timestamp);
-            var timeDifference = timestampDifference.ToOADate();
+            TimeSpan tdif = newAirplane.Timestamp - oldAirplane.Timestamp;
+            var tdiff = (double) tdif.TotalSeconds;
 
             double distance = Math.Sqrt(Math.Pow(x_coordinate_difference, 2) + Math.Pow(y_coordinate_difference, 2));
 
-            return distance/timeDifference;
+            return distance/tdiff;
         }
     }
 }

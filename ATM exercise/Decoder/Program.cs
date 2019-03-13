@@ -16,8 +16,8 @@ namespace Decoder
             DateTime time1 = DateTime.ParseExact("20151006213456001", format, CultureInfo.InvariantCulture);
             Airplane airplane1 = new Airplane("ATR423", 10000, 10000, 14000, time1);
 
-            DateTime time2 = DateTime.ParseExact("20151022215556001", format, CultureInfo.InvariantCulture);
-            Airplane airplane2 = new Airplane("ATR423", 40000, 40000, 14000, time2);
+            DateTime time2 = DateTime.ParseExact("20151006213457001", format, CultureInfo.InvariantCulture);
+            Airplane airplane2 = new Airplane("ATR423", 9900, 10100, 14000, time2);
 
             List<Airplane> airplanesList = new List<Airplane>();
 
