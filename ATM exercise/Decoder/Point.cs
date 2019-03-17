@@ -1,6 +1,6 @@
 using System;
 
-namespace Atm
+namespace Decoder
 {
     //Simple interface for Points
     interface IPoint

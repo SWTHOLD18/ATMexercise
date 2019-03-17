@@ -1,6 +1,6 @@
 using System;
 
-namespace Atm
+namespace Decoder
 {
     public class Airspace
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Atm
+namespace Decoder
 {
     public class Airplane
     {
