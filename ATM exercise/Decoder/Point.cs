@@ -3,7 +3,7 @@ using System;
 namespace Decoder
 {
     //Simple interface for Points
-    interface IPoint
+    public interface IPoint
     {
         int x { get; set; }
         int y { get; set; }
@@ -24,9 +24,23 @@ namespace Decoder
             _z = z;
         }
 
-        public int x { get; set; }
-        public int y { get; set; }
-        public int z { get; set; }
+        public int x
+        {
+            get { return _x; }
+            set { _x = value; }
+        }
+
+        public int y
+        {
+            get { return _y; }
+            set { _y = value; }
+        }
+
+        public int z
+        {
+            get { return _z; }
+            set { _z = value; }
+        }
     }
 }
 

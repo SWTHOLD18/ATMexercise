@@ -28,7 +28,9 @@ namespace Decoder
         {
             var point = CreatePointForAirplane(airplane);
 
-            if (point >= pointMin & point <= pointMax)
+            if (point.x >= pointMin.x & point.x <= pointMax.x & 
+                point.y >= pointMin.y & point.y <= pointMax.y & 
+                point.z >= pointMin.z & point.z <= pointMax.z )
             {
                 return true;
 
