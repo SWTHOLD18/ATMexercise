@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Decoder
+namespace Atm
 {
     class Program
     {
@@ -31,11 +31,12 @@ namespace Decoder
 
             //Console.WriteLine(testCalculator.GetDirection(airplane2.X_coordinate, airplane2.Y_coordinate));
 
-
             Console.WriteLine(testCalculator.CalculateSpeed(airplane2));
             
+            Airspace airspace = new Airspace();
 
-            
+            airspace.WithInAirspace(airplane1);    
+            airspace.WithInAirspace(airplane2);     
         }
     }
 }

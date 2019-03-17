@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using TransponderReceiver;
 
-namespace Decoder
+namespace Atm
 {
     public class Decoder
     {

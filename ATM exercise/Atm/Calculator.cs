@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Decoder
+namespace Atm
 {
     public class Calculator
     {
@@ -22,7 +22,6 @@ namespace Decoder
         {
             Airplane = airplane;
         }
-
        
         public double GetDirection(Airplane newAirplane)
         {
@@ -40,11 +39,6 @@ namespace Decoder
             {
                angle -= 2*Math.PI; 
             }
-            
-            /* 
-            angle /= Math.PI / 4;
-            int halfQuarter = Convert.ToInt32(angle);
-            */
 
             //Convert angle to degrees
             var degrees = angle * 180/Math.PI;

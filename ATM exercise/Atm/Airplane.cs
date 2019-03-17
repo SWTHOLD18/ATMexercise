@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Decoder
+namespace Atm
 {
     public class Airplane
     {
@@ -17,8 +17,7 @@ namespace Decoder
             int _Pre_y_coordinate,
             */
             int _Altitude,
-            DateTime _Timestamp
-            )
+            DateTime _Timestamp)
         {
             Tag = _tag;
             X_coordinate = _X_coordinate;
