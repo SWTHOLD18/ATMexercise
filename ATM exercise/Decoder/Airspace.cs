@@ -4,8 +4,6 @@ namespace Decoder
 {
     public class Airspace
     {
-        public Airplane airplane { get; set; }
-
         //Limit for start of Airspace with minium Height.
         IPoint pointMin = new Point(0, 0, 500);
 
