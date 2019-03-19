@@ -11,23 +11,6 @@ namespace UnitTest
     [TestFixture]
     public class AirplaneUnitTest
     {
-        [TestCase("ACR101", 12000, 15000, 1500, "20151006213456001",
-            "ACR102", 12000, 15000, 1500, "20151006213456676")]
-        public void CreateAirplane(string actualTag, int actualX, int actualY, int actualAlitude, string actualTimestamp, 
-            string expectedTag, int expectedX, int expectedY, int expectedAlitude, string expectedTimestamp)
-        {
-            string format = "yyyyMMddHHmmssfff";
-            DateTime time = DateTime.ParseExact(actualTimestamp, format, CultureInfo.InvariantCulture);
-
-            var actual = new Airplane(actualTag, actualX, actualY, actualAlitude, time);
-
-
-            DateTime time2 = DateTime.ParseExact(expectedTimestamp, format, CultureInfo.InvariantCulture);
-            var expected = new Airplane(expectedTag, expectedX, expectedY, expectedAlitude, time2);
-
-            Assert.AreEqual(actual, expected);
-        }
-
         //Test plane going from X=40000 Y=40000 to X=40000 Y=60000 expected direction = 0 degrees/North
         [TestCase("ACR101", 40000, 40000, 8000, "20151006213456001", 
             "ACR101", 40000, 60000, 8000, "20151006213457001", 0)]
