@@ -4,7 +4,7 @@ namespace Decoder
 {
     public class Print : IPrint
     {
-        public void PrintAirplaneWithSpeedAndDirection(Airplane airplane, Calculator calculator, Airspace Airspace)
+        public void PrintAirplaneWithSpeedAndDirection(Airplane airplane, ICalculator calculator, IAirspace Airspace)
         {
             if(Airspace.WithInAirspace(airplane))
             {
@@ -24,7 +24,7 @@ namespace Decoder
             System.Console.WriteLine("Point is: x={0}, y={1}, z={2}", point.x, point.y, point.z);
         }
 
-        public void PrintWithinAirspace(Airplane airplane, Airspace airspace)
+        public void PrintWithinAirspace(Airplane airplane, IAirspace airspace)
         {
             if(airspace.WithInAirspace(airplane))
             {
@@ -34,7 +34,7 @@ namespace Decoder
             }
         }
 
-        public void PrintAirplaneDirection(Airplane airplane, Calculator calculator, Airspace airspace)
+        public void PrintAirplaneDirection(Airplane airplane, ICalculator calculator, IAirspace airspace)
         {
             if(airspace.WithInAirspace(airplane))
             {

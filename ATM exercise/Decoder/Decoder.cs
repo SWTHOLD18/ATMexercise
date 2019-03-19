@@ -11,15 +11,26 @@ namespace Decoder
 
         //List of Airplanes
         public List<Airplane> airplaneList = new List<Airplane>();
-        public Calculator calc = new Calculator(null);
-        public Print printer = new Print();
-        public Airspace space = new Airspace();
+        public ICalculator calc = new Calculator();
+        public IPrint printer = new Print();
+        public IAirspace space = new Airspace();
 
         public Decoder(ITransponderReceiver receiver)
         {
             this.receiver = receiver;
             this.receiver.TransponderDataReady += DecodeReadyData;
         }
+
+        //fake inject constructer
+        public Decoder(ITransponderReceiver receiver, ICalculator calc, IPrint printer, IAirspace space)
+        {
+            this.receiver = receiver;
+            this.receiver.TransponderDataReady += DecodeReadyData;
+            this.calc = calc;
+            this.printer = printer;
+            this.space = space;
+        }
+
 
         private void DecodeReadyData(object sender, RawTransponderDataEventArgs arg)
         {

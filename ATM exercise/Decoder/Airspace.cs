@@ -2,7 +2,7 @@ using System;
 
 namespace Decoder
 {
-    public class Airspace
+    public class Airspace : IAirspace
     {
         //Limit for start of Airspace with minium Height.
         IPoint pointMin = new Point(0, 0, 500);

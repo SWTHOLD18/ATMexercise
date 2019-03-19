@@ -5,6 +5,6 @@ namespace Decoder
     //Simple interface for Points
     public interface IPrint
     {
-        void PrintAirplaneWithSpeedAndDirection(Airplane airplane, Calculator calculator, Airspace Airspace);
+        void PrintAirplaneWithSpeedAndDirection(Airplane airplane, ICalculator calculator, IAirspace Airspace);
     }
 }
