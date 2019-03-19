@@ -7,25 +7,32 @@ namespace Decoder
     public class Calculator
     {
         private List<Airplane> oldaAirplaneList;
-
-        public Airplane Airplane { get; set; }
         
         public Calculator(List<Airplane> airplaneList)
         {
-            if (oldaAirplaneList == null)
-            {
-                oldaAirplaneList = airplaneList;
-            }            
+            oldaAirplaneList = new List<Airplane>();            
         }
 
-        public void newPosition(Airplane airplane)
+        public void NewPositions(List<Airplane> newAirplaneList)
         {
-            Airplane = airplane;
+            // Make room for new airplanes, overwrite
+            oldaAirplaneList.Clear();
+            foreach (var plane in newAirplaneList)
+            {
+                // Add planes in the oldList
+                oldaAirplaneList.Add(plane);
+            }
         }
-       
+
         public double GetDirection(Airplane newAirplane)
         {
             Airplane oldAirplane = oldaAirplaneList.Find(a => a.Tag == newAirplane.Tag);
+
+            // Check if airplane is in list
+            if (oldAirplane == null)
+            {
+                return 0;
+            }
 
             var x = newAirplane.X_coordinate - oldAirplane.X_coordinate;
             var y = newAirplane.Y_coordinate - oldAirplane.Y_coordinate;
