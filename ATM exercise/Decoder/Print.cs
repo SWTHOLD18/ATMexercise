@@ -4,18 +4,27 @@ namespace Decoder
 {
     public class Print
     {
-        public static void PrintPoint(IPoint point)
+        public static void PrintAirplaneWithSpeedAndDirection(Airplane airplane, Calculator calculator, Airspace Airspace)
         {
-            System.Console.WriteLine("Point is: x={0}, y={1}, z={2}", point.x, point.y, point.z);
+            if(Airspace.WithInAirspace(airplane))
+            {
+                System.Console.WriteLine("Airplane: Tag: {0} // X-coordinate: {1} // Y-coordinate: {2} // Altitude: {3} // Timestamp: {4} // Speed: {5} // Direction: {6}", 
+                airplane.Tag, airplane.X_coordinate, airplane.Y_coordinate, airplane.Altitude, airplane.Timestamp, calculator.CalculateSpeed(airplane),calculator.GetDirection(airplane));
+            }
         }
 
-        public static void PrintAirplane(Airplane airplane)
+        public void PrintAirplane(Airplane airplane)
         {
             System.Console.WriteLine("Airplane: Tag: {0} // X-coordinate: {1} // Y-coordinate: {2} // Altitude: {3} // Timestamp: {4}", 
                 airplane.Tag, airplane.X_coordinate, airplane.Y_coordinate, airplane.Altitude, airplane.Timestamp);
         }
 
-        public static void PrintWithinAirspace(Airplane airplane, Airspace airspace)
+        public void PrintPoint(IPoint point)
+        {
+            System.Console.WriteLine("Point is: x={0}, y={1}, z={2}", point.x, point.y, point.z);
+        }
+
+        public void PrintWithinAirspace(Airplane airplane, Airspace airspace)
         {
             if(airspace.WithInAirspace(airplane))
             {
@@ -25,11 +34,11 @@ namespace Decoder
             }
         }
 
-        public static void PrintAirplaneDirection(Airplane airplane, Calculator calculator, Airspace airspace)
+        public void PrintAirplaneDirection(Airplane airplane, Calculator calculator, Airspace airspace)
         {
             if(airspace.WithInAirspace(airplane))
             {
-                System.Console.WriteLine("Airplane: {0} is flying in direction: {1}", airplane.Tag, calculator.GetDirection(airplane));
+                System.Console.WriteLine("Airplane: {0} is flying in direction: {1} degress (clockwise from North=0)", airplane.Tag, calculator.GetDirection(airplane));
             }
         }
     } 
