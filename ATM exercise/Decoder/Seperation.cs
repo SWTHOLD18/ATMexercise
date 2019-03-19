@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,7 @@ namespace Decoder
                         con.Add(airplaneList[i].Tag);
                         con.Add(airplaneList[j].Tag);
                         con.Add(airplaneList[i].Timestamp.ToString());
+
                     }
                 }
             }
@@ -41,6 +43,12 @@ namespace Decoder
         {
             List<string> log = new List<string>();
             log.AddRange(ConditionDetected(airplaneList));
+
+            StreamWriter file = new StreamWriter(@"C:\Users\aliel\Desktop\IKT Noter og opgaver\4 semester\SWT\ATMexercise\ATM exercise\LogATM.txt");
+            foreach (string condition in log)
+            {
+                file.WriteLine(condition);
+            }
         }
     }
 }
