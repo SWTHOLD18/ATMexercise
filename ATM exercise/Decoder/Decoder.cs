@@ -11,6 +11,9 @@ namespace Decoder
 
         //List of Airplanes
         public List<Airplane> airplaneList = new List<Airplane>();
+        public Calculator calc = new Calculator(null);
+        public Print printer = new Print();
+        public Airspace space = new Airspace();
 
         public Decoder(ITransponderReceiver receiver)
         {
@@ -20,6 +23,7 @@ namespace Decoder
 
         private void DecodeReadyData(object sender, RawTransponderDataEventArgs arg)
         {
+            airplaneList.Clear();
             foreach (var data in arg.TransponderData)
             {
                 string[] plane = data.Split(';');
@@ -35,7 +39,10 @@ namespace Decoder
 
                 //Add current Airplane to list of Airplanes.
                 airplaneList.Add(airplane);
+
+                printer.PrintAirplaneWithSpeedAndDirection(airplane, calc, space);
             }
+            calc.NewPositions(airplaneList);
         }
     }
 }
