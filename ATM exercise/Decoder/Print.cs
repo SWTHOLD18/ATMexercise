@@ -4,7 +4,7 @@ namespace Decoder
 {
     public class Print
     {
-        public static void PrintAirplaneWithSpeedAndDirection(Airplane airplane, Calculator calculator, Airspace Airspace)
+        public void PrintAirplaneWithSpeedAndDirection(Airplane airplane, Calculator calculator, Airspace Airspace)
         {
             if(Airspace.WithInAirspace(airplane))
             {
