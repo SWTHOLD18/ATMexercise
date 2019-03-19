@@ -14,22 +14,23 @@ namespace Decoder
             Airplane = airplane;
         }
 
-        public void checkWithOtherTracks(List<Airplane> airplaneList)
+        public List<string> ConditionDetected(List<Airplane> airplaneList)
         {
-            
-            for(int i=0; i < airplaneList.Count; i++)
+            List<string> con = new List<string>();
+            for(int i=0; i < airplaneList.Count - 1; i++)
             {
                 for(int j = i + 1; j < airplaneList.Count; j++)
                 {
                     
                     if(airplaneList[i].X_coordinate + 5000 <= airplaneList[j].X_coordinate && airplaneList[i].Y_coordinate + 300 <= airplaneList[j].Y_coordinate)
                     {
-                        var tag1 = airplaneList[i].Tag;
-                        var tag2 = airplaneList[j].Tag;
-                        var timestamp = airplaneList[i].Timestamp;
+                        con.Add(airplaneList[i].Tag);
+                        con.Add(airplaneList[j].Tag);
+                        con.Add(airplaneList[i].Timestamp.ToString());
                     }
                 }
             }
+            return con;
         }
 
         public void updateCondition()
