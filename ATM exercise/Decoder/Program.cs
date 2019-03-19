@@ -14,16 +14,20 @@ namespace Decoder
             string format = "yyyyMMddHHmmssfff";
 
             DateTime time1 = DateTime.ParseExact("20151006213456001", format, CultureInfo.InvariantCulture);
-            Airplane airplane1 = new Airplane("ATR423", 80000, 10000, 14000, time1);
+            Airplane airplane1 = new Airplane("ATR423", 8000, 10000, 14000, time1);
 
             DateTime time2 = DateTime.ParseExact("20151006213457001", format, CultureInfo.InvariantCulture);
-            Airplane airplane2 = new Airplane("ATR423", 9900, 10100, 14000, time2);
+            Airplane airplane2 = new Airplane("ATR425", 8100, 10100, 14000, time2);
 
             List<Airplane> airplanesList = new List<Airplane>();
 
             airplanesList.Add(airplane1);
 
             airplanesList.Add(airplane2);
+
+            Seperation septest = new Seperation();
+            septest.ConditionDetected(airplanesList);
+
 
             Calculator testCalculator = new Calculator(airplanesList);
 
@@ -36,7 +40,11 @@ namespace Decoder
             Airspace airspace = new Airspace();
 
             Console.WriteLine(airspace.WithInAirspace(airplane1));
-            Console.WriteLine(airspace.WithInAirspace(airplane2));  
+            Console.WriteLine(airspace.WithInAirspace(airplane2));
+
+           IPrint print = new Print();
+            print.PrintAirplaneWithSpeedAndDirection(airplane1,testCalculator,airspace);
+
         }
     }
 }

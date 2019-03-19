@@ -8,6 +8,10 @@ namespace Decoder
 {
     class Seperation
     {
+        public Seperation()
+        {
+
+        }
         public Airplane Airplane { get; set; }
         public void newTrack(Airplane airplane)
         {
@@ -22,7 +26,7 @@ namespace Decoder
                 for(int j = i + 1; j < airplaneList.Count; j++)
                 {
                     
-                    if(airplaneList[i].X_coordinate + 5000 <= airplaneList[j].X_coordinate && airplaneList[i].Y_coordinate + 300 <= airplaneList[j].Y_coordinate)
+                    if(airplaneList[i].X_coordinate - airplaneList[j].X_coordinate < 5000 && airplaneList[i].X_coordinate - airplaneList[j].X_coordinate > -5000 && airplaneList[i].Y_coordinate - airplaneList[j].Y_coordinate < 5000 && airplaneList[i].Y_coordinate - airplaneList[j].Y_coordinate > -5000 && airplaneList[i].Altitude - airplaneList[j].Altitude < 300 && airplaneList[i].Altitude - airplaneList[j].Altitude > -300)
                     {
                         con.Add(airplaneList[i].Tag);
                         con.Add(airplaneList[j].Tag);
