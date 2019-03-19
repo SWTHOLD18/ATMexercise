@@ -2,7 +2,7 @@ using System;
 
 namespace Decoder
 {
-    public class Print
+    public class Print : IPrint
     {
         public void PrintAirplaneWithSpeedAndDirection(Airplane airplane, Calculator calculator, Airspace Airspace)
         {
