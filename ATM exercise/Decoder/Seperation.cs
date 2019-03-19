@@ -33,9 +33,10 @@ namespace Decoder
             return con;
         }
 
-        public void updateCondition()
+        public void updateCondition(List<Airplane> airplaneList)
         {
-
+            List<string> log = new List<string>();
+            log.AddRange(ConditionDetected(airplaneList));
         }
     }
 }
