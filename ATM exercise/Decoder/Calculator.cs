@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Decoder
 {
-    public class Calculator
+    public class Calculator : ICalculator
     {
         private List<Airplane> oldaAirplaneList;
         
