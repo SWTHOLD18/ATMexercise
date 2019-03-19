@@ -8,7 +8,7 @@ namespace Decoder
     {
         private List<Airplane> oldaAirplaneList;
         
-        public Calculator(List<Airplane> airplaneList)
+        public Calculator()
         {
             oldaAirplaneList = new List<Airplane>();            
         }
